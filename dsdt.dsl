@@ -5,7 +5,7 @@
  * 
  * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of dsdt.dat, Mon Jul 30 16:01:44 2018
+ * Disassembly of dsdt.dat, Mon Jul 30 16:22:35 2018
  *
  * Original Table Header:
  *     Signature        "DSDT"
@@ -29,13 +29,6 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x00000003)
      * unresolved methods. Note: SSDTs can be dynamically loaded at
      * runtime and may or may not be available via the host OS.
      *
-     * To specify the tables needed to resolve external control method
-     * references, the -e option can be used to specify the filenames.
-     * Example iASL invocations:
-     *     iasl -e ssdt1.aml ssdt2.aml ssdt3.aml -d dsdt.aml
-     *     iasl -e dsdt.aml ssdt2.aml -d ssdt1.aml
-     *     iasl -e ssdt*.aml -d dsdt.aml
-     *
      * In addition, the -fe option can be used to specify a file containing
      * control method external declarations with the associated method
      * argument counts. Each line of the file must be of the form:
@@ -47,15 +40,15 @@ DefinitionBlock ("", "DSDT", 2, "ALASKA", "A M I ", 0x00000003)
      * because the disassembler had to guess at the number of arguments
      * required for each:
      */
-    External (_PR_.CPU0._PPC, UnknownObj)
+    External (_PR_.CPU0._PPC, IntObj)
     External (_SB_.PCI0.LPCB.TPM_.PTS_, MethodObj)    // Warning: Unknown method, guessing 1 arguments
-    External (CFGD, UnknownObj)
+    External (CFGD, IntObj)
     External (DPTF, UnknownObj)
     External (NDN3, MethodObj)    // Warning: Unknown method, guessing 1 arguments
-    External (PDC0, UnknownObj)
-    External (PDC1, UnknownObj)
-    External (PDC2, UnknownObj)
-    External (PDC3, UnknownObj)
+    External (PDC0, IntObj)
+    External (PDC1, IntObj)
+    External (PDC2, IntObj)
+    External (PDC3, IntObj)
     External (TCHG, UnknownObj)
 
     Name (LAPB, 0xFEE00000)
